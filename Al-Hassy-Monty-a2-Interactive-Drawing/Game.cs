@@ -55,6 +55,18 @@ namespace MohawkGame2D
                 // Draw EyeBrows
                 drawEyeBrow(185, 180);
                 drawEyeBrow(485, 180);
+
+                
+
+                for (int stars = 0; stars < 15; stars += 1)
+                {
+                    drawStars(randomXCoords, randomYCoords);
+                }
+
+                    Draw.FillColor = Color.Black;
+                Draw.Rectangle(200, 400, 400, 100);
+
+                //Draw.Rectangle(250, 450);
             }
             else
             {
