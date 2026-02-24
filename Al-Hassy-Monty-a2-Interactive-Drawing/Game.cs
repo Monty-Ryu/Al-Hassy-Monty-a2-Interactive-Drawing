@@ -56,20 +56,44 @@ namespace MohawkGame2D
                 drawEyeBrow(185, 180);
                 drawEyeBrow(485, 180);
 
-                
+                // Shades on interacive output
+                Draw.FillColor = shadesColors[0];
+                drawShades(320, 110);
+                Draw.FillColor = shadesColors[1];
+                drawShades(320, 95);
+                Draw.FillColor = shadesColors[2];
+                drawShades(320, 80);
+                Draw.FillColor = shadesColors[3];
+                drawShades(320, 75);
+                Draw.FillColor = shadesColors[4];
+                drawShades(320, 60);
+                Draw.FillColor = shadesColors[5];
+                drawShades(320, 45);
+                Draw.FillColor = shadesColors[6];
+                drawShades(320, 30);
 
                 for (int stars = 0; stars < 15; stars += 1)
                 {
                     drawStars(randomXCoords, randomYCoords);
                 }
 
-                    Draw.FillColor = Color.Black;
+                     // Draw Mouth Graphic
+                Draw.FillColor = Color.Black;
                 Draw.Rectangle(200, 400, 400, 100);
+
+                   // Draw Vomit graphic
+                Draw.FillColor = Color.LightGray;
+                Draw.Rectangle(250, 450, 300, 150);
+                Draw.FillColor = Color.Green;
+                Draw.Rectangle(250, 500, 300, 150);
+                Draw.FillColor = new Color(0, 100, 0);
+                Draw.Rectangle(250, 550, 300, 150);
 
                 //Draw.Rectangle(250, 450);
             }
             else
-            {
+            {  
+                   // Draw shades
                 Draw.FillColor = shadesColors[0];
                 drawShades(320, 220);
                 Draw.FillColor = Color.Black;
