@@ -48,7 +48,13 @@ namespace MohawkGame2D
 
             if (Input.IsMouseButtonDown(MouseInput.Left)) 
             {
+                  // Draw eyes
+                drawEye(200, 200);
+                drawEye(500, 200);
 
+                // Draw EyeBrows
+                drawEyeBrow(185, 180);
+                drawEyeBrow(485, 180);
             }
             else
             {
@@ -68,6 +74,7 @@ namespace MohawkGame2D
         void drawEyeBrow(int x, int y)
         {
             Draw.FillColor = (brown);
+            Draw.Rectangle(x, y, 125, 40);
 
         }
         void drawEye(int x, int y)
@@ -80,11 +87,11 @@ namespace MohawkGame2D
 
             // Draw inner eye
             Draw.FillColor = eyeColors[0];
-            Draw.Circle(x, y, 100);
+            Draw.Circle(x + 50, y + 50, 45);
             Draw.FillColor = eyeColors[1];
-            Draw.Circle(x, y, 75);
+            Draw.Circle(x + 50, y + 50, 35);
             Draw.FillColor = eyeColors[2];
-            Draw.Circle(x, y, 50);
+            Draw.Circle(x + 50, y + 50, 25);
         }
 
         void drawStars(int x, int y)
