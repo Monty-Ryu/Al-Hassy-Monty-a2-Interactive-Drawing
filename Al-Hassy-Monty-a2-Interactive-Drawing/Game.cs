@@ -64,20 +64,19 @@ namespace MohawkGame2D
                 Draw.FillColor = shadesColors[2];
                 drawShades(320, 80);
                 Draw.FillColor = shadesColors[3];
-                drawShades(320, 75);
+                drawShades(320, 65);
                 Draw.FillColor = shadesColors[4];
-                drawShades(320, 60);
+                drawShades(320, 50);
                 Draw.FillColor = shadesColors[5];
-                drawShades(320, 45);
+                drawShades(320, 35);
                 Draw.FillColor = shadesColors[6];
-                drawShades(320, 30);
+                drawShades(320, 20);
 
-                for (int stars = 0; stars < 15; stars += 1)
-                {
-                    drawStars(randomXCoords, randomYCoords);
-                }
+                    // Stars across screen
+                drawStars(randomXCoords, randomYCoords);
+                
 
-                     // Draw Mouth Graphic
+                // Draw Mouth Graphic
                 Draw.FillColor = Color.Black;
                 Draw.Rectangle(200, 400, 400, 100);
 
