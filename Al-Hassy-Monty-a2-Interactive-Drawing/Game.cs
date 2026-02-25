@@ -17,18 +17,21 @@ namespace MohawkGame2D
         Color[] shadesColors = [Color.Black, Color.Red, Color.Cyan, Color.Green, Color.Yellow, 
                                 new Color(128, 0, 128), new Color(255, 192, 203)];
 
+        int shadeStateColor = 0;
+        int shadeCoordY = 110;
 
         // Remaining facial feature colors
 
-        // Eyebrow
+        // Color for eyebrow 
         Color brown = new Color(150, 75, 0);
 
         // Eye colors (Maroon, Turqoise, Orange)
         Color[] eyeColors = [new Color(128, 0, 0), new Color(64, 224, 208), new Color(255, 165, 0)];
 
-        // Random locations for stars
-        int randomXCoords = Random.Integer(30, 770);
-        int randomYCoords = Random.Integer(30, 370);
+        // Array to store values random locations for stars
+
+        int[] randomXCoords = new int[15];
+        int[] randomYCoords = new int[15];
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -46,72 +49,81 @@ namespace MohawkGame2D
         {
             Window.ClearBackground(Color.White);
 
-            if (Input.IsMouseButtonDown(MouseInput.Left)) 
+
+            if (Input.IsMouseButtonPressed(MouseInput.Left))
             {
-                  // Draw eyes
-                drawEye(200, 200);
-                drawEye(500, 200);
-
-                // Draw EyeBrows
-                drawEyeBrow(185, 180);
-                drawEyeBrow(485, 180);
-
-                // Shades on interacive output
-                Draw.FillColor = shadesColors[0];
-                drawShades(320, 110);
-                Draw.FillColor = shadesColors[1];
-                drawShades(320, 95);
-                Draw.FillColor = shadesColors[2];
-                drawShades(320, 80);
-                Draw.FillColor = shadesColors[3];
-                drawShades(320, 65);
-                Draw.FillColor = shadesColors[4];
-                drawShades(320, 50);
-                Draw.FillColor = shadesColors[5];
-                drawShades(320, 35);
-                Draw.FillColor = shadesColors[6];
-                drawShades(320, 20);
-
-                    // Stars across screen
-                drawStars(randomXCoords, randomYCoords);
-                
-
-                // Draw Mouth Graphic
-                Draw.FillColor = Color.Black;
-                Draw.Rectangle(200, 400, 400, 100);
-
-                   // Draw Vomit graphic
-                Draw.FillColor = Color.LightGray;
-                Draw.Rectangle(250, 450, 300, 150);
-                Draw.FillColor = Color.Green;
-                Draw.Rectangle(250, 500, 300, 150);
-                Draw.FillColor = new Color(0, 100, 0);
-                Draw.Rectangle(250, 550, 300, 150);
-
-                //Draw.Rectangle(250, 450);
+                for (int i = 0; i < 15; i++)
+                {
+                    randomXCoords[i] = Random.Integer(30, 770);
+                    randomYCoords[i] = Random.Integer(30, 370);
+                }
+       
             }
-            else
-            {  
-                   // Draw shades
-                Draw.FillColor = shadesColors[0];
-                drawShades(320, 220);
-                Draw.FillColor = Color.Black;
-                Draw.Rectangle(200, 500, 400, 50);
-            }
+                if (Input.IsMouseButtonDown(MouseInput.Left))
+                {
+                    // Draw eyes
+                    drawEye(200, 200);
+                    drawEye(500, 200);
+
+                    // Draw EyeBrows
+                    drawEyeBrow(185, 180);
+                    drawEyeBrow(485, 180);
+
+                    // Shades on interacive output
+                    for (int i = 0; i < 7; i++)
+                    {
+                        Draw.FillColor = shadesColors[i];
+                        drawShades(320, shadeCoordY - i * 15);
+                    }
+           
+                     // Stars across screen randomly
+                for (int i = 0; i < 15; i++)
+                {
+                    drawStars(randomXCoords[i], randomYCoords[i]);
+                }
+
+                    // Draw Mouth Graphic
+                    Draw.FillColor = Color.Black;
+                    Draw.Rectangle(200, 400, 400, 100);
+
+                    // Draw Vomit graphic
+                    Draw.FillColor = Color.LightGray;
+                    Draw.Rectangle(250, 450, 300, 150);
+                    Draw.FillColor = Color.Green;
+                    Draw.Rectangle(250, 500, 300, 150);
+                    Draw.FillColor = new Color(0, 100, 0);
+                    Draw.Rectangle(250, 550, 300, 150);
+
+                    //Draw.Rectangle(250, 450);
+                }
+                else
+                {
+                    // Draw shades
+                    Draw.FillColor = shadesColors[0];
+                    drawShades(320, 220);
+                    Draw.FillColor = Color.Black;
+                    Draw.Rectangle(200, 500, 400, 50);
+                }
+            
         }
 
+             // Compound function draws shades graphic 
         void drawShades(int x, int y)
         {
             Draw.Rectangle(x, y, 160, 40);
             Draw.Circle(x - 70, y - 2, 100);
             Draw.Circle(x + 210, y - 2, 100);
         }
+
+              // Function draws eyebrow
         void drawEyeBrow(int x, int y)
         {
             Draw.FillColor = (brown);
             Draw.Rectangle(x, y, 125, 40);
 
         }
+
+           // Compound function draws full eye
         void drawEye(int x, int y)
         {
               // Draw eye shape
@@ -129,6 +141,7 @@ namespace MohawkGame2D
             Draw.Circle(x + 50, y + 50, 25);
         }
 
+            // Compound function draws star
         void drawStars(int x, int y)
         {
             Draw.FillColor = Color.Yellow;
